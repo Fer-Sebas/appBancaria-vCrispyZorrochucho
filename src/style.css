@@ -1,0 +1,283 @@
+
+/* ---------------------------------------- Global Variables ---------------------------------------- */
+
+:root{
+  scroll-behavior: smooth;
+  font-family: 'Source Sans Pro', sans-serif; color: var(--bodyColor-full);
+  
+  --animation-time: all .2s ease-in-out; 
+
+  --shadow: 0px 20px 30px rgba(0, 0, 0, 0.2);
+  --shadowPlus: 0px 22px 70px 4px rgba(0, 0, 0, 0.56);
+  
+  --mainColor: hsl(228, 32%, 9%, 100%); --mainColor-lighter: hsl(5, 80%, 65%, 100%); --altColor: hsl(5, 72%, 60%, 100%);
+  --bodyColor-full: hsl(0, 0%, 0%, 100%); --bodyColor-light: hsl(255, 100%, 100%, 4%); --bodyColor-lighter: hsl(255, 100%, 100%, 8%);  
+  --bodyColor-lightest: hsl(255, 100%, 100%, 32%);
+  --statusPositiveColor: hsl(130, 99%, 58%, 100%); --statusNegativeColor: hsl(20, 100%, 50%, 100%); 
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700;900&display=swap');
+
+*, *::before, *::after {
+  box-sizing: border-box; border: none;
+}
+
+ul[class], ol[class] {
+  padding: 0;
+  list-style: none;
+} 
+
+body, h1, h2, h3, h4, h5, h6, p, ul[class], ol[class], li, figure, figcaption, blockquote, dl, dd { margin: 0; }
+
+img{ max-width: 100%; display: block; }
+
+/*
+
+  Properties order {
+
+    position and layout: position, z-index, top, bottom, left, right, flexbox, float, clear
+
+    display and visibility: display, opacity, transform
+
+    clipping: overflow, clip
+
+    animation: animation, transition
+
+    box model: margin, box-shadow, border, border-radius, box-sizing, width, height, padding
+
+    background: background, cursor
+
+    typography: font, text-align, text-transform, word-spacing, color
+
+    pseudo-classes
+
+  }
+
+*/
+
+body{
+  padding: 105px 32px 105px 32px;
+  text-rendering: optimizeSpeed;
+  text-align: center;
+  background-color: var(--mainColor); color: white;
+}
+
+body::-webkit-scrollbar { width: 8px }
+body::-webkit-scrollbar-thumb { background: var(--bodyColor-lighter) }
+
+header{
+  position: fixed;  top: 0; left: 0;
+  width: 100%;  
+  background-color: var(--mainColor);
+}
+
+  header nav{
+    display: grid; grid-template-columns: auto 28px;
+    text-align: left; text-transform: capitalize;
+    margin: 32px 32px 16px;
+  }
+
+  header nav *{
+    margin-bottom: 0;
+  }
+
+footer{
+  position: fixed; bottom: 0; left: 0;
+  width: 100%;
+  background-color: var(--mainColor);
+  padding-top: 16px;
+}
+
+footer nav{
+  box-shadow: var(--shadowPlus); margin: 0 32px 24px; border: 0px solid var(--bodyColor-lighter); border-radius: 4px; padding: 16px 24px;
+  background-color: var(--bodyColor-lighter);
+}
+
+nav ul{
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(0, 1fr);
+}
+
+ul{
+  list-style: none;
+  margin: 0; padding: 0;
+  text-indent: 0;
+}
+
+ul li{
+  font-weight: 400; font-size: 12px; line-height: 18px; cursor: pointer;
+}
+
+  ul li.active{ font-weight: 700; }
+
+.divider{
+  height: 2px;
+  margin: 0 32px 16px;
+  background-color: var(--bodyColor-lighter);
+}
+
+/* ---------------------------- Text Elements ---------------------------- */
+
+h1{
+  margin-bottom: 12px; 
+  font-weight: 700; font-size: 34px; line-height: 36px; color: var(--altColor); 
+}
+
+h2{
+  margin-bottom: 8px;
+  font-weight: 400; font-size: 24px; line-height: 26px;
+}
+
+h3{
+  margin-bottom: 8px;
+  font-weight: 700; font-size: 16px; line-height: 18px;
+}
+
+h4{
+  margin-bottom: 8px;
+  font-weight: 700; font-size: 14px; line-height: 18px;
+}
+
+a{
+  font-weight: 700; text-decoration: none; color: var(--mainColor);
+}
+
+p{
+  margin-bottom: 8px;
+  font-weight: 500; font-size: 13px; line-height: 18px;
+}
+
+  p.altText{
+    font-weight: 500; color: var(--bodyColor-light);
+  }
+
+label{
+  margin-bottom: 8px;
+  font-weight: 700; font-size: 13px; line-height: 18px; color: white;
+}
+
+b.link { cursor: pointer; }
+
+.positive{ color: var(--statusPositiveColor) }
+.negative{ color: var(--statusNegativeColor) }
+
+
+/* ---------------------------- Input Elements ---------------------------- */
+
+input, textarea, select{
+  display: block;
+  transition: 300ms ease all;
+  margin: 4px 0 16px 0; border: 1px solid var(--bodyColor-lighter); width: 100%; border-radius: 4px; padding: 4px 8px; outline-color: var(--bodyColor-lighter);
+  background: var(--bodyColor-lighter);
+  font-weight: 800; font-size: 12px; font-weight: 500; font-size: 12px; line-height: 18px; font-family: inherit; color: white;
+}
+
+select option {
+  background-color: #343640;
+  color: white;
+}
+
+input[type=password]{ letter-spacing: 0.3em; }
+
+textarea{ resize: none; }
+
+button{
+  display: block;
+  margin: 0 auto 16px; border: none; border-radius: 4px; padding: 4px 16px;
+  background-color: var(--bodyColor-light); cursor: pointer;
+  font-weight: 700; font-size: 12px; line-height: 18px; font-family: inherit; color: white;
+}
+
+  button:hover{ opacity: 0.85; } 
+
+  button.icon{
+    display: grid; align-items: center; justify-content: center;
+    margin: 0 auto; border: solid 1px var(--bodyColor-lighter); border-radius: 4px; padding: 0; width: 24px; height: 24px;
+    background-color: var(--bodyColor-lighter); 
+    transition: var(--animation-time);
+  }
+
+    button.icon path{
+      fill: white;
+    }
+
+    button.icon:hover{
+      background-color: var(--bodyColor-light);      
+      transition: var(--animation-time);
+    }
+
+.fieldGroup{
+  text-align: left;
+}
+
+/* ---------------------------- Custom Elements ---------------------------- */ 
+
+.card{
+  display: grid; grid-auto-flow: row; row-gap: 16px;
+  box-shadow: var(--shadow); margin-bottom: 16px; border: 0px solid var(--bodyColor-lighter); border-radius: 4px; padding: 16px 24px;
+  /* width: max(420px); */ 
+  background-color: var(--bodyColor-lighter);
+  text-align: left; overflow-wrap: break-word; color: white; 
+}
+
+  .card.locked {
+    background-color: var(--bodyColor-light);
+    color: var(--bodyColor-lightest) ;
+  }
+
+	.card > div:first-child{
+		display: grid; grid-auto-flow: column; grid-template-columns: auto auto;
+	}
+
+	.card > div:first-child div {
+		display: grid;
+		grid-auto-flow: column;
+		grid-template-columns: 160px 160px 64px;
+		align-items: center;
+		justify-content: space-between;
+	}
+
+	.card > div:first-child *{
+		margin-bottom: 0;
+	}
+
+	.card > div:first-child nav {
+		display: grid; grid-auto-flow: column; column-gap: 6px; justify-content: end; opacity: 0;    
+		transition: var(--animation-time);
+	}
+
+  .card.locked:hover > div:first-child nav {
+    opacity: 0;    
+	}
+
+  .card.canceled:hover > div:first-child nav {
+    opacity: 0;    
+	}
+
+	.card:hover > div:first-child nav {
+		opacity: 1.0;    
+		transition: var(--animation-time);
+	}
+
+
+	.card.dialog{
+		text-align: center;
+	}
+
+	.card.account {
+		margin-bottom: 16px; padding: 16px;
+		text-align: left;
+	}
+
+		.card.account :nth-child(4) {
+		display: grid; grid-template-columns: 1fr 1fr;
+		}
+
+		.card.account :nth-child(4) :nth-child(2) {
+		justify-self: right;
+		}
+		
+		.card.account :nth-child(4) > h4 {
+		margin-bottom: 0;
+		}
